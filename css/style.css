@@ -102,6 +102,7 @@ header {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 1000;
 } 
 
 .menu-toggle:hover {
@@ -218,7 +219,7 @@ header {
   margin-bottom: 10px;
 }
 
-/* Blocos de conteúdo (index.html) */
+/* Blocos de conteúdo (index.html) - FOTOS MENORES */
 .bloco { 
   margin-bottom: 40px; 
   text-align: justify; 
@@ -234,8 +235,11 @@ header {
 
 .bloco img { 
   width: 100%; 
+  max-width: 400px; /* TAMANHO REDUZIDO */
+  height: auto;
   border-radius: 10px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-self: center; /* Centraliza a imagem */
 } 
 
 /* Botões */ 
@@ -296,16 +300,18 @@ header {
 }
 
 /* ============================= GALERIA ============================= */ 
+/* GALERIA VOLTADA AO ESTILO ORIGINAL - Layout flexível */
 .galeria-projeto .cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   margin-top: 20px;
 }
 
 .galeria-projeto img, .galeria-oficina img { 
-  width: 100%;
-  height: 200px;
+  width: 250px; /* VOLTOU AO TAMANHO ORIGINAL */
+  height: 180px; /* VOLTOU AO TAMANHO ORIGINAL */
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
@@ -313,7 +319,7 @@ header {
 } 
 
 .galeria-projeto img:hover, .galeria-oficina img:hover { 
-  transform: scale(1.03); 
+  transform: scale(1.05); 
 } 
 
 /* ============================= TEXTO COM IMAGEM (SOBRE.html) ============================= */ 
@@ -430,6 +436,11 @@ footer p {
   .secao-texto h2 {
     font-size: 1.8rem;
   }
+  
+  /* Ajuste das fotos na tela inicial para tablet */
+  .bloco img {
+    max-width: 350px;
+  }
 }
 
 /* Celular (até 768px) */
@@ -449,6 +460,7 @@ footer p {
     height: 40px;
   }
   
+  /* MENU MOBILE FUNCIONAL - CORRIGIDO */
   .nav-links {
     display: none;
     position: fixed;
@@ -461,6 +473,8 @@ footer p {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     z-index: 100;
     border-top: 2px solid #007B01;
+    max-height: 80vh;
+    overflow-y: auto;
   }
   
   .nav-links.ativo {
@@ -473,36 +487,59 @@ footer p {
   
   .nav-links a {
     padding: 12px 15px;
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
     border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .nav-links a:last-child {
     border-bottom: none;
   }
   
+  /* Seta do dropdown no mobile */
+  .dropdown > a::after {
+    content: " ▼";
+    font-size: 0.8rem;
+    margin-left: 5px;
+  }
+  
   .menu-toggle {
     display: block;
     margin-left: 10px;
+    position: relative;
   }
   
-  /* Submenu para mobile */
+  /* SUBMENU FUNCIONAL NO MOBILE - CORRIGIDO */
   .submenu {
     position: static;
     display: none;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
     background-color: rgba(0, 123, 1, 0.95);
-  }
-  
-  .dropdown:hover .submenu {
-    display: none;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 10px 0;
   }
   
   .dropdown.active .submenu {
     display: block;
   }
+  
+  .submenu li a {
+    padding: 10px 25px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .submenu li:last-child a {
+    border-bottom: none;
+  }
+  
+  /* Fecha menu ao clicar fora (será controlado pelo JavaScript) */
   
   /* Banner */
   .banner-texto {
@@ -528,9 +565,13 @@ footer p {
     font-size: 1.3rem;
   }
   
-  /* Blocos */
+  /* Blocos - Fotos menores no mobile */
   .bloco {
     margin-bottom: 30px;
+  }
+  
+  .bloco img {
+    max-width: 100%; /* No mobile ocupa toda a largura */
   }
   
   /* Cards */
@@ -538,13 +579,13 @@ footer p {
     max-width: 100%;
   }
   
-  /* Galeria */
+  /* Galeria - Layout original adaptado para mobile */
   .galeria-projeto .cards-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    gap: 15px;
   }
   
   .galeria-projeto img {
+    width: calc(50% - 10px); /* 2 colunas no mobile */
     height: 150px;
   }
   
@@ -606,6 +647,17 @@ footer p {
     font-size: 1.2rem;
   }
   
+  /* Fotos ainda menores em telas pequenas */
+  .bloco img {
+    max-width: 100%;
+  }
+  
+  /* Galeria - 1 coluna em telas muito pequenas */
+  .galeria-projeto img {
+    width: 100%;
+    height: 180px;
+  }
+  
   .botao {
     padding: 12px 20px;
     font-size: 1rem;
@@ -614,14 +666,6 @@ footer p {
   .botao-menor {
     padding: 8px 15px;
     font-size: 0.9rem;
-  }
-  
-  .galeria-projeto .cards-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .galeria-projeto img {
-    height: 120px;
   }
   
   footer {

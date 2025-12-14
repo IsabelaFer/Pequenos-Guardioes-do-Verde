@@ -504,19 +504,35 @@ footer p {
     display: block;
   }
   
-  /* Botão do menu hamburguer */
-  .menu-toggle {
-    display: block; /* Aparece apenas no mobile */
-    background: #007B01;
-    border: none;
-    font-size: 1.5rem;
-    color: #FDFBD4;
-    width: 45px;
-    height: 45px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
+/* Botão do menu hamburguer */
+.menu-toggle {
+  display: none; /* Será mostrado via JavaScript no mobile */
+  background: #007B01;
+  border: none;
+  font-size: 1.5rem;
+  color: #FDFBD4;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  z-index: 1000; /* IMPORTANTE: fica acima de tudo */
+}
+
+/* MOSTRAR no mobile via JavaScript */
+@media (max-width: 768px) {
+  .menu-toggle.mobile-visible {
+    display: block;
   }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .nav-links.ativo {
+    display: flex;
+  }
+}
   
   /* SUBMENU DAS OFICINAS */
   .submenu {

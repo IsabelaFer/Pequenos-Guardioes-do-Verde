@@ -1,0 +1,393 @@
+/* =============================
+   ESTILOS GERAIS
+============================= */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4fdf4;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =============================
+   CABEÇALHO E NAVBAR
+============================= */
+header {
+  background-color: #81c784;
+  color: #007B01;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Container principal da navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FDFBD4;
+  padding: 10px 20px;
+  position: relative; /* necessário para z-index funcionar */
+  z-index: 10;
+}
+
+@font-face {
+    font-family: 'Aloja';
+    src: url('Aloja-Light.otf') format('opentype');
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Aloja';
+  font-size: 1.5rem;
+  color: #007B01;
+
+}
+
+.logo-icone {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* Links principais */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  color: #007B01;
+  font-weight: 500;
+  padding: 8px 12px;
+  display: block;
+  border-radius: 5px;
+}
+
+.nav-links a:hover{
+  background-color: #007B01;
+  color: #FDFBD4;
+}
+.nav-links .ativo {
+  background-color: #007B01;
+  color: #FDFBD4;
+}
+
+/* Botão de menu (versão mobile) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #FDFBD4;
+}
+
+/* =============================
+   SUBMENU (DROP-DOWN)
+============================= */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 20;
+  background-color: #007B01;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 150px;
+  border-radius: 5px;
+}
+
+.submenu li a {
+  padding: 10px;
+  color: #FDFBD4;
+}
+
+.submenu li a:hover {
+  background-color: #209220;
+}
+
+/* Exibe o submenu quando passa o mouse */
+.dropdown:hover .submenu {
+  display: block;
+}
+
+/* =============================
+   BANNER
+============================= */
+.banner {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: cover;
+  filter: brightness(85%);
+}
+
+.banner-texto {
+  font-family: 'Aloja';
+  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FDFBD4;
+  text-shadow: 1px 1px 4px #000;
+}
+
+/* =============================
+   CONTEÚDO PRINCIPAL
+============================= */
+.conteudo {
+  padding: 40px 30px;
+  text-align: center;
+}
+
+/* Botões */
+.botao,
+.botao-menor {
+  display: inline-block;
+  background-color: #007b01;
+  color: #FDFBD4;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.botao:hover,
+.botao-menor:hover {
+  background-color: #007B01;
+}
+
+/* Cards */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #FDFBD4;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 250px;
+}
+
+/* =============================
+   GALERIA
+============================= */
+.galeria-projeto img,
+.galeria-oficina img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.galeria-projeto img:hover,
+.galeria-oficina img:hover {
+  transform: scale(1.05);
+}
+
+/* =============================
+   RODAPÉ
+============================= */
+footer {
+  background-color: #007B01;
+  color: #FDFBD4;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* =============================
+   RESPONSIVIDADE
+============================= */
+@media (max-width: 700px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #81c784;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .nav-links.ativo {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.secao-texto {
+  width: 90%;
+  max-width: 700px;
+  margin: 40px auto;
+  text-align: left;
+  color: #333;
+  line-height: 1.6;
+  font-size: medium;
+}
+
+.bloco {
+  margin-bottom: 40px;
+  text-align: justify;
+}
+
+.bloco img {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+/* =============================
+   TEXTO COM IMAGEM (INTRODUÇÃO)
+============================= */
+.introducao {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.introducao h2{
+  font-family: 'Aloja';
+  color: #007B01;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.texto-com-imagem {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.texto-com-imagem img {
+  width: 30%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.texto-com-imagem p {
+  flex: 1;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Inverte a posição da imagem para os pares */
+.texto-com-imagem:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+  .texto-com-imagem {
+    flex-direction: column;
+  }
+
+  .texto-com-imagem img {
+    width: 100%;
+  }
+}
+
+/* ======== VÍDEO ======== */
+.video-projeto {
+  text-align: center;
+  font-family: 'Aloja';
+  color: #007B01;
+  margin: 60px auto;
+  max-width: 1000px;
+}
+
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.video-container iframe {
+  width: 480px;
+  height: 270px;
+  border-radius: 12px;
+}
+
+.descricao-video {
+  max-width: 450px;
+  font-family: sans-serif;
+  text-align: left;
+  color: #333;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column;
+  }
+
+  .video-container iframe {
+    width: 90%;
+    height: 220px;
+  }
+
+  .descricao-video {
+    max-width: 90%;
+    text-align: center;
+  }
+}
+
+.resumo-oficinas h2,
+  .resumo-oficinas h3 {
+    font-family: 'Aloja', sans-serif;
+    font-weight: 700;
+    color: #007B01;
+  }
+
+  .secao-texto h2,
+  .secao-texto h3 {
+    font-family: 'Aloja', sans-serif;
+    font-weight: 700;
+    color: #007B01;
+  }
+
+  .galeria-oficina h2,
+  .galeria-oficina h3 {
+    font-family: 'Aloja', sans-serif;
+    font-weight: 700;
+    color: #007B01;
+  }
